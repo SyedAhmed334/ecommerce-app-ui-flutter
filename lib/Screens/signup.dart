@@ -53,6 +53,7 @@ class SignUpPage extends StatelessWidget {
                       Text('USERNAME'),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter some text';
@@ -67,6 +68,7 @@ class SignUpPage extends StatelessWidget {
                       TextFormField(
                         controller: passController,
                         obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter some text';
@@ -90,19 +92,8 @@ class SignUpPage extends StatelessWidget {
                       TextFormField(
                         controller: confirmPassController,
                         obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          if (value.length < 8) {
-                            return 'Password must be at least 8 characters long';
-                          }
-                          if (!value.contains(RegExp(r'[0-9]'))) {
-                            return 'Password must contain at least one number';
-                          }
-                          if (!value.contains(RegExp(r'[A-Z]'))) {
-                            return 'Password must contain at least one capital case letter';
-                          }
                           if (confirmPassController.text !=
                               passController.text) {
                             return 'Passwords do not match';

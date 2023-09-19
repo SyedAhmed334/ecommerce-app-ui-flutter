@@ -38,6 +38,7 @@ class LoginPage extends StatelessWidget {
                       Text('USERNAME'),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter some text';
@@ -51,6 +52,7 @@ class LoginPage extends StatelessWidget {
                       Text('PASSWORD'),
                       TextFormField(
                         obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter some text';
@@ -66,6 +68,20 @@ class LoginPage extends StatelessWidget {
                           }
                           return null;
                         },
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextButton(
+                            style: ButtonStyle(
+                                alignment: Alignment.centerRight,
+                                foregroundColor:
+                                    MaterialStatePropertyAll(Colors.black),
+                                textStyle: MaterialStatePropertyAll(
+                                    TextStyle(fontWeight: FontWeight.w500))),
+                            onPressed: () {},
+                            child: Text(
+                              'Forgot your password?',
+                            )),
                       ),
                       SizedBox(
                         height: 40,

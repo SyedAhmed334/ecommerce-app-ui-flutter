@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ecommerce_app_ui/Screens/home_page.dart';
 import 'package:ecommerce_app_ui/Screens/login.dart';
-import 'package:ecommerce_app_ui/Screens/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -17,11 +18,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
-        scaffoldBackgroundColor: Colors.grey.shade300,
-      ),
-      home: LoginPage(),
+          primarySwatch: Colors.amber,
+          textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
+          scaffoldBackgroundColor: Color(0xffffffff),
+          appBarTheme: AppBarTheme(
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: Colors.grey,
+              statusBarBrightness: Brightness.dark,
+            ),
+          )),
+      home: HomePage(),
     );
   }
 }
