@@ -3,15 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+import 'login.dart';
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class SignUpPage extends StatelessWidget {
+  SignUpPage({super.key});
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController passController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +24,12 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 150),
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 120),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Login",
+                        "Create Account",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 40, fontWeight: FontWeight.bold),
@@ -39,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: 60,
                       ),
-                      Text('Username'),
+                      Text('FULL NAME'),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
@@ -52,8 +50,22 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      Text('Password'),
+                      Text('USERNAME'),
                       TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text('PASSWORD'),
+                      TextFormField(
+                        controller: passController,
                         obscureText: true,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -64,6 +76,36 @@ class _LoginPageState extends State<LoginPage> {
                           }
                           if (!value.contains(RegExp(r'[0-9]'))) {
                             return 'Password must contain at least one number';
+                          }
+                          if (!value.contains(RegExp(r'[A-Z]'))) {
+                            return 'Password must contain at least one capital case letter';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text('CONFIRM PASSWORD'),
+                      TextFormField(
+                        controller: confirmPassController,
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter some text';
+                          }
+                          if (value.length < 8) {
+                            return 'Password must be at least 8 characters long';
+                          }
+                          if (!value.contains(RegExp(r'[0-9]'))) {
+                            return 'Password must contain at least one number';
+                          }
+                          if (!value.contains(RegExp(r'[A-Z]'))) {
+                            return 'Password must contain at least one capital case letter';
+                          }
+                          if (confirmPassController.text !=
+                              passController.text) {
+                            return 'Passwords do not match';
                           }
                           return null;
                         },
@@ -83,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               Fluttertoast.showToast(
-                                msg: "Logged In Successfully",
+                                msg: "Signed Up Successfully",
                                 toastLength: Toast.LENGTH_LONG,
                                 backgroundColor: Colors.blue,
                               );
@@ -96,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  'Login',
+                                  'SIGN UP',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18),
@@ -112,21 +154,31 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.only(top: 80),
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Don\'t have an account?'),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text('Sign up'),
-                        ),
-                      ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have an account?',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600, color: Colors.black54),
                     ),
-                  ),
+                    TextButton(
+                      style: ButtonStyle(
+                          padding: MaterialStatePropertyAll(EdgeInsets.zero)),
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return LoginPage();
+                        }));
+                      },
+                      child: Text(
+                        'Sign In',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

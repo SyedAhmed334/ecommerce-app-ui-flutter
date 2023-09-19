@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:ecommerce_app_ui/login.dart';
+import 'package:ecommerce_app_ui/Screens/login.dart';
+import 'package:ecommerce_app_ui/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(
-    MyApp();
-  );
+  runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -25,4 +25,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
