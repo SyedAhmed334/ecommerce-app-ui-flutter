@@ -1,7 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ecommerce_app_ui/Data/product_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
+import '../widgets/product_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -37,90 +41,23 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: GridView(
+            child: GridView.builder(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 5),
-              children: [
-                Card(
-                  color: Colors.grey[100],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/earbuds1.png'),
-                        height: 100,
-                      ),
-                      Text('Product 1'),
-                    ],
-                  ),
-                ),
-                Card(
-                  color: Colors.grey[100],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/earbuds2.png'),
-                        height: 100,
-                      ),
-                      Text('Product 2'),
-                    ],
-                  ),
-                ),
-                Card(
-                  color: Colors.grey[100],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/earbuds3.png'),
-                        height: 100,
-                      ),
-                      Text('Product 3'),
-                    ],
-                  ),
-                ),
-                Card(
-                  color: Colors.grey[100],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/earbuds4.png'),
-                        height: 100,
-                      ),
-                      Text('Product 4'),
-                    ],
-                  ),
-                ),
-                Card(
-                  color: Colors.grey[100],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/earbuds5.png'),
-                        height: 100,
-                      ),
-                      Text('Product 5'),
-                    ],
-                  ),
-                ),
-                Card(
-                  color: Colors.grey[100],
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image(
-                        image: AssetImage('assets/images/earbuds7.png'),
-                        height: 100,
-                      ),
-                      Text('Product 6'),
-                    ],
-                  ),
-                ),
-              ],
+                childAspectRatio: 5 / 6,
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 5,
+              ),
+              itemCount: products.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ProductCard(
+                    url: products[index].url,
+                    title: products[index].title,
+                    price: products[index].price,
+                    rating: products[index].rating,
+                    users: products[index].users);
+              },
             ),
           ),
         ],
