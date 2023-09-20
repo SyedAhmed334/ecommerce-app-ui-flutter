@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
           Container(
-            padding: EdgeInsets.only(left: 15\),
+            padding: EdgeInsets.only(left: 15),
             width: double.infinity,
             child: Text(
               'Earbuds',
@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
-                        image: AssetImage('assets/images/earbuds1.jpg'),
+                        image: AssetImage('assets/images/earbuds1.png'),
                         height: 100,
                       ),
                       Text('Product 1'),
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
-                        image: AssetImage('assets/images/earbuds2.jpg'),
+                        image: AssetImage('assets/images/earbuds2.png'),
                         height: 100,
                       ),
                       Text('Product 2'),
@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
-                        image: AssetImage('assets/images/earbuds3.jpg'),
+                        image: AssetImage('assets/images/earbuds3.png'),
                         height: 100,
                       ),
                       Text('Product 3'),
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
-                        image: AssetImage('assets/images/earbuds4.jpg'),
+                        image: AssetImage('assets/images/earbuds4.png'),
                         height: 100,
                       ),
                       Text('Product 4'),
@@ -100,7 +100,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image(
-                        image: AssetImage('assets/images/earbuds5.jpg'),
+                        image: AssetImage('assets/images/earbuds5.png'),
                         height: 100,
                       ),
                       Text('Product 5'),
