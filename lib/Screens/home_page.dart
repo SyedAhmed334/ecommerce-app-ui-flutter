@@ -41,23 +41,26 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 5 / 6,
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 5,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: GridView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 5 / 6,
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 5,
+                ),
+                itemCount: products.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ProductCard(
+                      url: products[index].url,
+                      title: products[index].title,
+                      price: products[index].price,
+                      rating: products[index].rating,
+                      users: products[index].users);
+                },
               ),
-              itemCount: products.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ProductCard(
-                    url: products[index].url,
-                    title: products[index].title,
-                    price: products[index].price,
-                    rating: products[index].rating,
-                    users: products[index].users);
-              },
             ),
           ),
         ],

@@ -2,6 +2,7 @@
 
 import 'package:ecommerce_app_ui/Screens/home_page.dart';
 import 'package:ecommerce_app_ui/Screens/login.dart';
+import 'package:ecommerce_app_ui/Screens/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
