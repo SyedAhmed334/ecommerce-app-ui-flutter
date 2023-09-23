@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:ecommerce_app_ui/Models/cart.dart';
+import 'package:ecommerce_app_ui/Screens/cart_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -13,6 +15,13 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
+  List<Cart> cartItems = [];
+  void addCart(Cart cItem) {
+    setState(() {
+      cartItems!.add(cItem);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +29,13 @@ class _ProductDetailsState extends State<ProductDetails> {
       appBar: AppBar(title: Text('Ecommerce App'), actions: [
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
-          child: Icon(Icons.shopping_cart),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return CartScreen(cartItems: cartItems!);
+                }));
+              },
+              child: Icon(Icons.shopping_cart)),
         ),
       ]),
       body: Column(
@@ -126,7 +141,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                                         borderRadius:
                                             BorderRadius.circular(0))),
                                 elevation: MaterialStatePropertyAll(0)),
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                addCart(Cart(
+                                    url: widget.url,
+                                    title: widget.title,
+                                    price: widget.price));
+                              });
+                            },
                             child: Text('Add to Cart'),
                           ),
                         ],
