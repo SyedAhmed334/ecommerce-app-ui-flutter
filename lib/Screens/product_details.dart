@@ -18,7 +18,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   List<Cart> cartItems = [];
   void addCart(Cart cItem) {
     setState(() {
-      cartItems!.add(cItem);
+      cartItems.add(cItem);
     });
   }
 
@@ -32,7 +32,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: GestureDetector(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CartScreen(cartItems: cartItems!);
+                  return CartScreen(cartItems: cartItems);
                 }));
               },
               child: Icon(Icons.shopping_cart)),

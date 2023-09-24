@@ -120,6 +120,11 @@ class SignUpPage extends StatelessWidget {
                                 toastLength: Toast.LENGTH_LONG,
                                 backgroundColor: Colors.blue,
                               );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignUpPage(),
+                                  ));
                             }
                           }, // Call the _submitForm function when pressed
                           child: Padding(

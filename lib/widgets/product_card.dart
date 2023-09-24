@@ -65,7 +65,8 @@ class ProductCard extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: RatingBar.builder(
                       initialRating: rating,
-                      minRating: 1,
+                      minRating: rating,
+                      maxRating: rating,
                       direction: Axis.horizontal,
                       allowHalfRating: false,
                       itemCount: 5,

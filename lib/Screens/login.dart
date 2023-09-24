@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
 
+import 'package:ecommerce_app_ui/Screens/home_page.dart';
 import 'package:ecommerce_app_ui/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -102,6 +103,11 @@ class LoginPage extends StatelessWidget {
                                 toastLength: Toast.LENGTH_LONG,
                                 backgroundColor: Colors.blue,
                               );
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomePage(),
+                                  ));
                             }
                           }, // Call the _submitForm function when pressed
                           child: Padding(
