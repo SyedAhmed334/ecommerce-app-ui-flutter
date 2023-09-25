@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
               statusBarBrightness: Brightness.dark,
             ),
           )),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

@@ -3,13 +3,19 @@
 import 'package:ecommerce_app_ui/Data/product_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
+import '../Models/cart.dart';
 import '../widgets/product_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Cart> cartItems = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,11 +60,13 @@ class HomePage extends StatelessWidget {
                 itemCount: products.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ProductCard(
-                      url: products[index].url,
-                      title: products[index].title,
-                      price: products[index].price,
-                      rating: products[index].rating,
-                      users: products[index].users);
+                    url: products[index].url,
+                    title: products[index].title,
+                    price: products[index].price,
+                    rating: products[index].rating,
+                    users: products[index].users,
+                    cartItems: cartItems,
+                  );
                 },
               ),
             ),

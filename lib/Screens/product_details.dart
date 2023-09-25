@@ -8,17 +8,22 @@ class ProductDetails extends StatefulWidget {
   final String url;
   final String title;
   final String price;
-  ProductDetails({required this.url, required this.title, required this.price});
+  final List<Cart> cartItems;
+
+  ProductDetails(
+      {required this.url,
+      required this.title,
+      required this.price,
+      required this.cartItems});
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  List<Cart> cartItems = [];
   void addCart(Cart cItem) {
     setState(() {
-      cartItems.add(cItem);
+      widget.cartItems.add(cItem);
     });
   }
 
@@ -28,14 +33,23 @@ class _ProductDetailsState extends State<ProductDetails> {
       backgroundColor: Colors.grey[300],
       appBar: AppBar(title: Text('Ecommerce App'), actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 8.0),
+          padding: const EdgeInsets.only(right: 15.0),
           child: GestureDetector(
-              onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CartScreen(cartItems: cartItems);
-                }));
-              },
-              child: Icon(Icons.shopping_cart)),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return CartScreen(cartItems: widget.cartItems);
+              }));
+            },
+            child: Center(
+              child: Badge(
+                offset: Offset(6, -10),
+                backgroundColor: Colors.white,
+                textColor: Colors.black,
+                label: Text('${widget.cartItems.length}'),
+                child: Icon(Icons.shopping_cart),
+              ),
+            ),
+          ),
         ),
       ]),
       body: Column(
