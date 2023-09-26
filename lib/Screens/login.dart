@@ -56,16 +56,7 @@ class LoginPage extends StatelessWidget {
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          if (value.length < 8) {
-                            return 'Password must be at least 8 characters long';
-                          }
-                          if (!value.contains(RegExp(r'[0-9]'))) {
-                            return 'Password must contain at least one number';
-                          }
-                          if (!value.contains(RegExp(r'[A-Z]'))) {
-                            return 'Password must contain at least one capital case letter';
+                            return 'Please enter your password';
                           }
                           return null;
                         },
