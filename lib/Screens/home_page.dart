@@ -2,9 +2,6 @@
 
 import 'package:ecommerce_app_ui/Data/product_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import '../Models/cart.dart';
 import '../widgets/product_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Cart> cartItems = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +61,6 @@ class _HomePageState extends State<HomePage> {
                     price: products[index].price,
                     rating: products[index].rating,
                     users: products[index].users,
-                    cartItems: cartItems,
                   );
                 },
               ),

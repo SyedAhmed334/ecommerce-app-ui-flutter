@@ -1,34 +1,30 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
 
+import 'package:ecommerce_app_ui/Data/cart_provider.dart';
 import 'package:ecommerce_app_ui/Models/cart.dart';
 import 'package:ecommerce_app_ui/Screens/cart_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
   final String url;
   final String title;
   final String price;
-  final List<Cart> cartItems;
 
-  ProductDetails(
-      {required this.url,
-      required this.title,
-      required this.price,
-      required this.cartItems});
+  ProductDetails({
+    required this.url,
+    required this.title,
+    required this.price,
+  });
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  void addCart(Cart cItem) {
-    setState(() {
-      widget.cartItems.add(cItem);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final cartProducts = Provider.of<CartProvider>(context);
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(title: Text('Ecommerce App'), actions: [
@@ -37,16 +33,18 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CartScreen(cartItems: widget.cartItems);
+                return CartScreen();
               }));
             },
-            child: Center(
-              child: Badge(
-                offset: Offset(6, -10),
-                backgroundColor: Colors.white,
-                textColor: Colors.black,
-                label: Text('${widget.cartItems.length}'),
-                child: Icon(Icons.shopping_cart),
+            child: Consumer<CartProvider>(
+              builder: (context, cart, child) => Center(
+                child: Badge(
+                  offset: Offset(6, -10),
+                  backgroundColor: Colors.white,
+                  textColor: Colors.black,
+                  label: Text('${cart.cartItems.length}'),
+                  child: Icon(Icons.shopping_cart),
+                ),
               ),
             ),
           ),
@@ -156,12 +154,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                                             BorderRadius.circular(0))),
                                 elevation: MaterialStatePropertyAll(0)),
                             onPressed: () {
-                              setState(() {
-                                addCart(Cart(
-                                    url: widget.url,
-                                    title: widget.title,
-                                    price: widget.price));
-                              });
+                              cartProducts.addToCart(Cart(
+                                url: widget.url,
+                                title: widget.title,
+                                price: widget.price,
+                              ));
                             },
                             child: Text('Add to Cart'),
                           ),

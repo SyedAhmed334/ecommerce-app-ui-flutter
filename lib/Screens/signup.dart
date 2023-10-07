@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

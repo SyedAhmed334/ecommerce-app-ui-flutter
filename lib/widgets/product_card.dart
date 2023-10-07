@@ -4,15 +4,12 @@ import 'package:ecommerce_app_ui/Screens/product_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-import '../Models/cart.dart';
-
 class ProductCard extends StatelessWidget {
   final String url;
   final String title;
   final String price;
   final double rating;
   final int users;
-  final List<Cart> cartItems;
 
   ProductCard({
     required this.url,
@@ -20,7 +17,6 @@ class ProductCard extends StatelessWidget {
     required this.price,
     required this.rating,
     required this.users,
-    this.cartItems = const [],
   });
 
   @override
@@ -32,7 +28,6 @@ class ProductCard extends StatelessWidget {
             url: url,
             title: title,
             price: price,
-            cartItems: cartItems,
           );
         }));
       },
